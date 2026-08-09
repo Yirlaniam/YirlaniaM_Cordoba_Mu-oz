@@ -26,7 +26,9 @@ public class ProductoService {
     }
 
     public Optional<Producto> buscarPorId(Long id) {
-        return repo.findById(id);
+        return repo.findById(
+            
+        );
     }
 
     public List<Producto> buscarPorCategoria(String categoria) {

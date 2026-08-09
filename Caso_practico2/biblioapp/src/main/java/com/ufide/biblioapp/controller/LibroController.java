@@ -1,6 +1,5 @@
 package com.ufide.biblioapp.controller;
 
-import com.ufide.biblioapp.entity.Libro;
 import com.ufide.biblioapp.service.LibroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

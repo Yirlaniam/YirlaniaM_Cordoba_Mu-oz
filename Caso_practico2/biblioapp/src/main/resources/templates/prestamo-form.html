@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/header :: head('Nuevo préstamo')}"></head>
+
+<body>
+
+<div th:replace="~{fragments/header :: nav}"></div>
+
+<div class="container">
+
+    <h2 class="mb-4">Registrar préstamo</h2>
+
+    <form th:action="@{/prestamos/guardar}" th:object="${prestamo}" method="post">
+
+        <div class="mb-3">
+            <label class="form-label">Libro</label>
+            <select class="form-select" th:field="*{libro}" required>
+
+                <option value="">Seleccione un libro</option>
+
+                <option th:each="libro : ${libros}"
+                        th:value="${libro.id}"
+                        th:text="${libro.titulo}">
+                </option>
+
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Usuario</label>
+            <select class="form-select" th:field="*{usuario}" required>
+
+                <option value="">Seleccione un usuario</option>
+
+                <option th:each="usuario : ${usuarios}"
+                        th:value="${usuario.id}"
+                        th:text="${usuario.nombreCompleto}">
+                </option>
+
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Fecha préstamo</label>
+            <input type="date"
+                   class="form-control"
+                   th:field="*{fechaPrestamo}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Guardar préstamo
+        </button>
+
+        <a th:href="@{/prestamos}" class="btn btn-secondary">
+            Cancelar
+        </a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

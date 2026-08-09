@@ -45,5 +45,4 @@ public class EventoController {
         return "evento";
     }
 
-    // TODO Caso Practico 1: agregar aca los endpoints del CRUD y el GET con parametro.
 }

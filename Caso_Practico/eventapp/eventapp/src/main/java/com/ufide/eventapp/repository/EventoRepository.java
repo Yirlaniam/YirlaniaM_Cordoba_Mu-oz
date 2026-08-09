@@ -24,7 +24,5 @@ public interface EventoRepository extends JpaRepository<Evento, Long> {
     /** Devuelve eventos cuya fecha sea posterior o igual a la fecha dada. */
     List<Evento> findByFechaGreaterThanEqualOrderByFechaAsc(LocalDate fecha);
 
-    // TODO Caso Practico: aca podes agregar otros query methods que necesites.
-    // Ejemplo (no obligatorio):
-    //   List<Evento> findByNombreContainingIgnoreCase(String texto);
+
 }

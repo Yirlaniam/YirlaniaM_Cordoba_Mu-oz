@@ -20,13 +20,17 @@ public class UsuarioService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         Usuario usuario = usuarioRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + username));
+                .orElseThrow(() ->
+                        new UsernameNotFoundException("Usuario no encontrado: " + username));
 
         return User.builder()
                 .username(usuario.getUsername())
                 .password(usuario.getPassword())
-                .authorities(List.of(new SimpleGrantedAuthority("ROLE_" + usuario.getRol())))
+                .authorities(
+                        List.of(new SimpleGrantedAuthority("ROLE_" + usuario.getRol().name()))
+                )
                 .build();
     }
 
@@ -34,11 +38,19 @@ public class UsuarioService implements UserDetailsService {
         return usuarioRepository.findByUsername(username).orElse(null);
     }
 
-    // ==========================================================
-    // CASO PRACTICO 2 - BONUS (CRUD completo de Usuarios):
-    // Si vas a implementar el bonus, agrega aca los metodos
-    // listar/guardar/eliminar usuarios, con la misma logica de
-    // validarRol(...) que viste en la Semana 12 (UsuarioService
-    // de cursosapp).
-    // ==========================================================
+    // ===========================
+    // NUEVO MÉTODO
+    // ===========================
+    public List<Usuario> listar() {
+        return usuarioRepository.findAll();
+    }
+
+    public Usuario guardar(Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
+
+    public void eliminar(Long id) {
+        usuarioRepository.deleteById(id);
+    }
+
 }

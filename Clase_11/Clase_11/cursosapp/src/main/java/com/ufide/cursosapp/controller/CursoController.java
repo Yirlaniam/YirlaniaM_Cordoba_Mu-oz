@@ -1,6 +1,5 @@
 package com.ufide.cursosapp.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 // CLASE 11 - PASO B.1: descomentar este import.
 // import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
